@@ -29,6 +29,78 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Typing animation effect
+  useEffect(() => {
+    const name = 'Laxmi Sai Maneesh Reddy Jupalle';
+    const title = 'Computer Science Graduate Student | AI & ML Specialist';
+    
+    let nameIndex = 0;
+    let titleIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+      if (nameIndex < name.length) {
+        setTypedText(name.slice(0, nameIndex + 1));
+        nameIndex++;
+      } else if (titleIndex < title.length) {
+        setTypedTitle(title.slice(0, titleIndex + 1));
+        titleIndex++;
+      } else {
+        clearInterval(typeInterval);
+      }
+    }, 100);
+
+    return () => clearInterval(typeInterval);
+  }, []);
+
+  // Mouse tracking
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Particles animation
+  useEffect(() => {
+    const generateParticles = () => {
+      const particles = [];
+      for (let i = 0; i < 50; i++) {
+        particles.push({
+          id: i,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 0.5,
+          speedY: (Math.random() - 0.5) * 0.5,
+          opacity: Math.random() * 0.5 + 0.2,
+        });
+      }
+      setParticlesData(particles);
+    };
+
+    generateParticles();
+    window.addEventListener('resize', generateParticles);
+    return () => window.removeEventListener('resize', generateParticles);
+  }, []);
+
+  // Animate particles
+  useEffect(() => {
+    const animateParticles = () => {
+      setParticlesData(prev => prev.map(particle => ({
+        ...particle,
+        x: particle.x + particle.speedX,
+        y: particle.y + particle.speedY,
+        x: particle.x > window.innerWidth ? 0 : particle.x < 0 ? window.innerWidth : particle.x,
+        y: particle.y > window.innerHeight ? 0 : particle.y < 0 ? window.innerHeight : particle.y,
+      })));
+    };
+
+    const interval = setInterval(animateParticles, 50);
+    return () => clearInterval(interval);
+  }, []);
+
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
