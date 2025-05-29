@@ -106,11 +106,38 @@ function App() {
   };
 
   const skills = {
-    programming: ['Python', 'Java', 'JavaScript', 'C++', 'C', 'RUST', 'SQL'],
-    frameworks: ['TensorFlow', 'PyTorch', 'Django', 'Scikit-Learn'],
-    tools: ['AWS', 'Azure', 'Docker', 'Jenkins', 'APIs'],
-    databases: ['SQL', 'DBMS', 'Hadoop'],
-    visualization: ['PowerBI', 'Tableau', 'Data Analysis']
+    programming: [
+      { name: 'Python', level: 95 },
+      { name: 'Java', level: 85 },
+      { name: 'JavaScript', level: 90 },
+      { name: 'C++', level: 80 },
+      { name: 'C', level: 75 },
+      { name: 'RUST', level: 70 },
+      { name: 'SQL', level: 85 }
+    ],
+    frameworks: [
+      { name: 'TensorFlow', level: 90 },
+      { name: 'PyTorch', level: 85 },
+      { name: 'Django', level: 80 },
+      { name: 'Scikit-Learn', level: 88 }
+    ],
+    tools: [
+      { name: 'AWS', level: 85 },
+      { name: 'Azure', level: 80 },
+      { name: 'Docker', level: 75 },
+      { name: 'Jenkins', level: 70 },
+      { name: 'APIs', level: 90 }
+    ],
+    databases: [
+      { name: 'SQL', level: 85 },
+      { name: 'DBMS', level: 80 },
+      { name: 'Hadoop', level: 75 }
+    ],
+    visualization: [
+      { name: 'PowerBI', level: 80 },
+      { name: 'Tableau', level: 75 },
+      { name: 'Data Analysis', level: 90 }
+    ]
   };
 
   const experiences = [
