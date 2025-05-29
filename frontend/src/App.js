@@ -378,31 +378,41 @@ function App() {
             <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               Professional Experience
             </h2>
-            <div className="space-y-12">
-              {experiences.map((exp, index) => (
-                <div key={index} className="relative">
-                  <div className="bg-slate-800/50 p-8 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                      <div>
-                        <h3 className="text-2xl font-semibold text-blue-400 mb-2">{exp.title}</h3>
-                        <p className="text-xl text-gray-300 mb-1">{exp.company}</p>
-                        <p className="text-gray-400">{exp.location}</p>
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-purple-600"></div>
+              
+              <div className="space-y-12">
+                {experiences.map((exp, index) => (
+                  <div key={index} className="relative group">
+                    {/* Timeline dot */}
+                    <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-slate-900 group-hover:scale-125 transition-transform duration-300"></div>
+                    
+                    <div className="ml-16 bg-slate-800/50 p-8 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 hover-lift">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                          <h3 className="text-2xl font-semibold text-blue-400 mb-2 group-hover:text-blue-300 transition-colors">
+                            {exp.title}
+                          </h3>
+                          <p className="text-xl text-gray-300 mb-1">{exp.company}</p>
+                          <p className="text-gray-400">{exp.location}</p>
+                        </div>
+                        <span className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-full text-sm font-semibold mt-4 md:mt-0 self-start">
+                          {exp.period}
+                        </span>
                       </div>
-                      <span className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-full text-sm font-semibold mt-4 md:mt-0 self-start">
-                        {exp.period}
-                      </span>
+                      <ul className="space-y-3">
+                        {exp.achievements.map((achievement, idx) => (
+                          <li key={idx} className="flex items-start group/item">
+                            <span className="text-blue-400 mr-3 mt-1 group-hover/item:scale-125 transition-transform">▸</span>
+                            <span className="text-gray-300 group-hover/item:text-white transition-colors">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="space-y-2">
-                      {exp.achievements.map((achievement, idx) => (
-                        <li key={idx} className="flex items-start">
-                          <span className="text-blue-400 mr-3 mt-1">▸</span>
-                          <span className="text-gray-300">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
