@@ -286,10 +286,10 @@ function App() {
             </div>
             
             {/* Fixed Name Display */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight whitespace-nowrap overflow-hidden text-shadow-lg">
-              <span className="inline-block min-w-full">
+            <h1 className="hero-name font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent text-shadow-lg">
+              <span className="inline-block">
                 {typedText || 'Laxmi Sai Maneesh Reddy Jupalle'}
-                <span className="animate-pulse">|</span>
+                <span className="animate-pulse typing-cursor">|</span>
               </span>
             </h1>
             
